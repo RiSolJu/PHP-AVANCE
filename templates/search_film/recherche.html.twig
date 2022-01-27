@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page ajout de film {% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<div class="example-wrapper">
+
+{% if Response == "True" %}
+    <h2 class="mb-12 text-center text-3xl font-extrabold">Voilà {{ Title }} :</h2> <br>
+    {{ Plot }}<br>
+{% else %}
+    <h2 class="mb-12 text-center text-3xl font-extrabold">Le film n'a pas été trouvé.</h2>
+{% endif %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page d'accueil {% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .info {width : 20px; margin-left : 100px}
+    .add{width : 70px; margin-left : 200px}
+</style>
+
+<div class="example-wrapper">
+    <h2 class="mb-12 text-center text-4xl font-extrabold">Bienvenue sur le site Cinema CGR !</h2>
+
+
+    <h2 class="mb-12 text-center text-1xl font-extrabold">Voici la liste des films disponibles :</h2>
+
+    <ul  class="mt-4">
+    {% for film in films %}
+        <div class="mb-4 w-3/6 bg-gray-50 sm:max-w-md p-5 mx-auto flex justify-center">
+            <li class="w-3/6 justify-center">
+                Titre : {{film.getNomFilm()}}<br>
+                {% if film.getDescription() != null %}
+                  Description : {{film.getDescription()}}<br> 
+                {% endif %}
+                Score : {{film.getScore()}}<br>
+                {% if film.getVotersNumber() != null %}
+                Nombre de vote : {{film.getVotersNumber()}}<br>
+                {% endif %}
+                <a class="w-full mt-4 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition" href="moredetails/{{film.getId()}}">Plus d'infos</a>
+                {% if film.getFileName() != null %}
+                    <img class="mt-4" src="{{asset('ImageFile/'~ film.getFileName())}}">
+                {% else %}
+                    <a class="w-full mt-4 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition" href="addImage/{{film.getId()}}">Ajouter une Image pour ce film</a>
+                {% endif %}
+            </li>
+        </div>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

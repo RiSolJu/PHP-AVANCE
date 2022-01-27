@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page de détail {% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .info {width : 20px; margin-left : 100px}
+</style>
+
+<div class="example-wrapper">
+    <h2 class="mb-12 text-center text-5xl font-extrabold">Voici le film {{film.getNomFilm()}} :</h2>
+    <div class="mb-4 w-3/6 bg-gray-50 sm:max-w-md p-5 mx-auto flex justify-center">
+        <div class="w-3/6 justify-center">
+            {% if film.getDescription() != null %}
+                Description : {{film.getDescription()}}<br> 
+            {% endif %}
+            Score : {{film.getScore()}}<br>
+            {% if film.getVotersNumber() != null %}
+            Nombre de vote : {{film.getVotersNumber()}}<br>
+            {% endif %}
+            {% if film.getFileName() != null %}
+                <img src="{{asset('ImageFile/'~ film.getFileName())}}">
+            {% else %}
+                <a class="w-full mt-4 inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition" href="../addImage/{{film.getId()}}">Ajouter une Image pour ce film</a>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+<br>
+    {% if badPassword == 'true' %}
+        Le code admin n'est pas bon !
+    {% endif %}
+
+    {{ form_start(form) }}
+        <div class="w-full justify-center mt-6  flex flex-col pt-6 sm:pt-0">
+            <div class="w-3/6 bg-gray-50 sm:max-w-md p-5 mx-auto">
+                <h2 class="mb-12 text-center text-1xl font-extrabold">Supprimer le film :</h2>
+                <div class="mb-4">
+                    {{form_row(form.Admincode)}}
+                </div>
+                <div class="mt-6">
+                    <div class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">{{ form_row(form.save) }}</div>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

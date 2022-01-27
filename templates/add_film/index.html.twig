@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page ajout de film {% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        <div class="w-full justify-center  flex flex-col pt-6 sm:pt-0">
+        <div class="w-3/6 bg-gray-50 sm:max-w-md p-5 mx-auto">
+    <h2 class="mb-12 text-center text-5xl font-extrabold">Bienvenue sur la page d'ajout d'un film !</h2>
+        <div class="mb-4">
+            {{form_row(form.NomFilm)}}
+        </div>
+        <div class="mb-4">
+            {{form_row(form.Email)}}
+        </div>
+        <div class="mb-4">
+            {{form_row(form.score)}}
+        </div>
+        <div class="mt-6">
+            <div class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">{{ form_row(form.save) }}</div>
+        </div>
+  </div>
+</div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page des stats{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .info {width : 20px; margin-left : 100px}
+</style>
+
+<div class="example-wrapper">
+    <h2 class="mb-12 text-center text-5xl font-extrabold">Voilà un graphique des notes du site :</h2>
+</div>
+
+<canvas id="pieChart" width="200" height="200"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script >
+    const ctx = document.getElementById('pieChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ],
+          datasets: [{
+            label: 'Scores',
+            data: [
+              {{ scores[0] }},
+              {{ scores[1] }},
+              {{ scores[2] }},
+              {{ scores[3] }},
+              {{ scores[4] }},
+              {{ scores[5] }},
+              {{ scores[6] }},
+              {{ scores[7] }},
+              {{ scores[8] }},
+              {{ scores[9] }}
+            ],
+            backgroundColor: [
+              '#C27A4E',
+              '#C2654E',
+              '#C14E79',
+              '#BE4EC2',
+              '#804EC2',
+              '#4E82C2',
+              '#4EA1C2',
+              '#4EAEC2',
+              '#4EC2B0',
+              '#4EC26E'
+            ],
+            hoverOffset: 10
+          }]
+        }
+    })
+</script>
+
+{% endblock %}

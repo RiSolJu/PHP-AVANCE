@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+  <meta charset="UTF-8">
+    
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+</head>
+<body>
+    <nav class="bg-white shadow dark:bg-gray-800">
+        <div class="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between">
+                <img src="{{ asset('images/CGR_2013_logo.ico') }}" width="80px" height="80px">
+            </div>
+            <div class="items-center md:flex">
+                <div class="flex flex-col md:flex-row md:mx-6"> 
+                    <a class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="/homepage">Page d'accueil</a>
+                    <a class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="/addFilm">Ajouter un Film</a>
+                    <a class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="/addFilmCSV">Importer des Films</a>
+                    <a class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="/seeChart">Voir les statistiques du site</a>
+                    <a class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="/searchFilm">Chercher un film</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container w-full p-20 m-4 mx-auto my-16  bg-white border-2 border-gray-300 h-auto rounded-xl">
+        <div>
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+    <div class="flex justify-center mb-8" height="100px" >
+        Made by Quentin LESPINASSE </span>
+    </div>
+</body>
+</html>
+
